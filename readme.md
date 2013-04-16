@@ -41,7 +41,7 @@ You need to add your buttons in the file InputDeviceConfig:
 
 2. Add the button/axis to the ButtonType or AxisType enum
 3. Add the button/axis to the GetButton or GetAxis function
-(4. only when adding a new axis) add the axis to the input manager
+4. (only when adding a new axis) add the axis to the input manager
 
 
 ## GET INPUT
