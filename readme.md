@@ -23,7 +23,7 @@ This code was initially written for the game Krautscape (www.krautscape.net) to 
 
 ## INSTALLATION
 
-copy the InputManager.asset.renameit file to your ProjectSettings directory (rename it to inputManager.asset)
+If you use it in another project, copy the InputManager.asset.renameit file to your ProjectSettings directory (rename it to inputManager.asset)
 
 
 ## ADDING A NEW BUTTON/AXIS
@@ -39,10 +39,15 @@ You need to add your buttons in the file InputDeviceConfig:
     // # will be replaced by joystick number
     // the name of the axis is the unity inputmanager name
 
+    Set the name 
+
 2. Add the button/axis to the ButtonType or AxisType enum
 3. Add the button/axis to the GetButton or GetAxis function
 4. (only when adding a new axis) add the axis to the input manager
 
+## CHANGE AND ADD CONFIGS
+
+Each config is saved in a gameobject as a subobject of the input manager. You can just change the values in the inspector of existing configs. If you need a new config for a different controller type, copy an existing one and change the values. 
 
 ## GET INPUT
 
