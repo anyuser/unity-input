@@ -1,20 +1,20 @@
 
 
-UNNESSECARY INPUT MANAGER 0.0.0.0.0.0.1
+# UNNESSECARY INPUT MANAGER 0.0.0.0.0.0.1
 for unity 4 (probably also 3.5)
 
 by Mario von Rickenbach
 www.mariov.ch
 
 
-# WHY? 
+## WHY? 
 
 Because the unity input manager is stupid.
 
 This code was initially written for the game Krautscape (www.krautscape.net) to support multiple gamepads on different operating systems. It was not intended to be distributed as a package so there are still some Krautscape-specific things inside (like button names etc.). But if anyone can use this or parts of it, feel free to use it in your projects!
 
 
-# FEATURES
+## FEATURES
 
 - Unplug & Plug new controllers while playing
 - Different device configs for different Operating systems
@@ -22,12 +22,12 @@ This code was initially written for the game Krautscape (www.krautscape.net) to 
 - Four gamepads & two keyboard configurations are predefined (for more gamepads just add more axes with ids in the input manager)
 
 
-# INSTALLATION
+## INSTALLATION
 
 copy the InputManager.asset.renameit file to your ProjectSettings directory (rename it to inputManager.asset)
 
 
-# ADDING A NEW BUTTON/AXIS
+## ADDING A NEW BUTTON/AXIS
 
 You need to add your buttons in the file InputDeviceConfig:
 1. Add a variable with the button/axis name to the config class e.g. 
@@ -44,7 +44,7 @@ You need to add your buttons in the file InputDeviceConfig:
 (4. only when adding a new axis) add the axis to the input manager
 
 
-# GET INPUT
+## GET INPUT
 
 you can get input from the last active input device like this:
 
