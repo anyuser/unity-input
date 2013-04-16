@@ -1,8 +1,8 @@
 
 
 # UNNESSECARY INPUT MANAGER 0.0.0.0.0.0.1
-for unity 4 (probably also 3.5)
-by Mario von Rickenbach
+for unity 4 (probably also 3.5)  
+by Mario von Rickenbach  
 www.mariov.ch
 
 
