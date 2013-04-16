@@ -10,7 +10,9 @@ www.mariov.ch
 
 Because the unity input manager is stupid.
 
-This code was initially written for the game Krautscape (www.krautscape.net) to support multiple gamepads on different operating systems. It was not intended to be distributed as a package so there are still some Krautscape-specific things inside (like button names etc.). But if anyone can use this or parts of it, feel free to use it in your projects!
+The goal was to make an input manager which allows you to add different configurations for different type of controllers, so it works on windows and mac with keyboard, and different gamepads (like ps3 or xbox) at the same time, no matter which one you plug in first.
+
+This code was initially written for the game Krautscape (www.krautscape.net). It was not intended to be distributed as a package so there are still some Krautscape-specific things inside (like button names etc.). But if anyone can use this or parts of it, feel free to use it in your projects!
 
 
 ## FEATURES
