@@ -17,9 +17,9 @@ This code was initially written for the game Krautscape (www.krautscape.net). If
 
 ## FEATURES
 
-- Different device configs for different Operating systems
+- Different device configs for different controller types and operating systems
 - Unplug & Plug new controllers while playing, they get initialized automatically with the right configuration
-- Support for up to 8 gamepads with mixed configurations & multiple keyboard configurations
+- Support for up to 4 gamepads with mixed configurations & multiple keyboard configurations
 - Always get input from the last active device (for singleplayer games)
 
 
