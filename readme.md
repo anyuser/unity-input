@@ -1,6 +1,6 @@
 
 
-# UNNESSECARY INPUT MANAGER 0.0.2
+# UNNECESSARY INPUT MANAGER 0.0.2
 for unity 4 (probably also 3.5)  
 by Mario von Rickenbach  
 www.mariov.ch
