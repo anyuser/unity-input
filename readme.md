@@ -8,7 +8,7 @@ www.mariov.ch
 
 ## WHY? 
 
-Because the unity input manager is stupid.
+Because the unity input manager is stupid. (Don't get me wrong, unity itself is fantastic, but the input manager is just... bad.)
 
 The goal was to make an input manager which allows you to add different configurations for different type of controllers, so it works on Windows and Mac, with Keyboard and different gamepads mixed(like ps3 or xbox) at the same time, no matter which one you plug in first.
 
