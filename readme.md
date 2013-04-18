@@ -1,6 +1,6 @@
 
 
-# UNNESSECARY INPUT MANAGER 0.0.0.0.0.0.1
+# UNNESSECARY INPUT MANAGER 0.0.2
 for unity 4 (probably also 3.5)  
 by Mario von Rickenbach  
 www.mariov.ch
@@ -17,10 +17,10 @@ This code was initially written for the game Krautscape (www.krautscape.net). It
 
 ## FEATURES
 
-- Unplug & Plug new controllers while playing
 - Different device configs for different Operating systems
-- Always get input from the last active device (optional)
-- Four gamepads & two keyboard configurations are predefined (for more gamepads just add more axes with ids in the input manager)
+- Unplug & Plug new controllers while playing, they get initialized automatically with the right configuration
+- Support for up to 8 gamepads with mixed configurations & multiple keyboard configurations
+- Always get input from the last active device (for singleplayer games)
 
 
 ## INSTALLATION
@@ -45,7 +45,6 @@ You need to add your buttons in the file InputDeviceConfig:
 
 2. Add the button/axis to the ButtonType or AxisType enum
 3. Add the button/axis to the GetButton or GetAxis function
-4. (only when adding a new axis) add the axis to the input manager
 
 ## CHANGE AND ADD CONFIGS
 

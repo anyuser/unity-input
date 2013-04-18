@@ -14,6 +14,7 @@ public class InputDeviceConfig : MonoBehaviour
 
 	// sensitivity of this device config (input manager sensitivity is overriden)
 	public float sensitivity = 1;
+	public float deadZone = 0;
 
 	// axis names
 	// # gets replaced by the actual joytick id of the device if isJoystick is on, 
@@ -22,35 +23,28 @@ public class InputDeviceConfig : MonoBehaviour
 	public string verticalAxis = "Keyboard Vertical";
 
 	// configurable buttons
-	public string accelerateButton = "up";
-	public string brakeButton = "down";
-	public string flyButton = "space";
-	public string respawnButton = "tab";
-	public string actionButton = "left ctrl";
-	public string cameraButton = "";
-	// add more buttons here:
+	public string action1Button = "space";
+	public string action2Button = "x";
+	public string action3Button = "c";
+	public string action4Button = "v";
+	// add more buttons here...
 	// public string newbutton = "defaultkey";
 
 	public string GetButton(ButtonType buttonType)
 	{
 
-		if( buttonType == ButtonType.Fly )
-			return flyButton;
+		if( buttonType == ButtonType.Action1 )
+			return action1Button;
 		
-		if( buttonType == ButtonType.Camera )
-			return cameraButton;
+		if( buttonType == ButtonType.Action2 )
+			return action2Button;
 		
-		if( buttonType == ButtonType.Action )
-			return actionButton;
+		if( buttonType == ButtonType.Action3 )
+			return action3Button;
 		
-		if( buttonType == ButtonType.Respawn )
-			return respawnButton;
+		if( buttonType == ButtonType.Action4 )
+			return action4Button;
 		
-		if( buttonType == ButtonType.Accelerate )
-			return accelerateButton;
-		
-		if( buttonType == ButtonType.Brake )
-			return brakeButton;
 
 		return "";
 	}
@@ -71,12 +65,12 @@ public class InputDeviceConfig : MonoBehaviour
 public enum ButtonType
 {
 	None = 0,
-	Fly = 1,
-	Respawn = 2,
-	Action = 4,
-	Camera = 8,
-	Accelerate = 16,
-	Brake = 32
+	Action1 = 1,
+	Action2 = 2,
+	Action3 = 4,
+	Action4 = 8
+	// ... and here
+	// Action5 = 16
 }
 
 public enum AxisType

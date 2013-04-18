@@ -6,19 +6,24 @@ public class InputDevice : MonoBehaviour
 	public InputDeviceConfig config;
 	public int deviceId = -1;
 	
-	InputAxisState lastAxes = new InputAxisState();
-	InputAxisState currentAxes = new InputAxisState();
-	InputButtonState lastButtons = new InputButtonState();
-	InputButtonState currentButtons = new InputButtonState();
+	InputState lastState = new InputState();
+	InputState currentState = new InputState();
 	
-	public InputAxisState axis{
+	public float[] axes{
 		get{
-			return currentAxes;
+			return currentState.axisValues;
 		}
 	}
-	public InputButtonState buttons{
+	public ButtonType buttons{
 		get{
-			return currentButtons;
+			return currentState.buttons;
+		}
+	}
+	
+	public InputState state
+	{
+		get{
+			return currentState;
 		}
 	}
 	
@@ -30,51 +35,35 @@ public class InputDevice : MonoBehaviour
 	
 	void Update()
 	{		
-		// update axis
-		lastAxes = currentAxes;
-		currentAxes = new InputAxisState();
+		// update state
+		lastState = currentState;
+		currentState = new InputState();
+		currentState.timestamp = Time.time;
 
-		// go through all axis
+		// update axes
 		for(int i = 0; i < System.Enum.GetValues(typeof(AxisType)).Length; i++)
 			UpdateAxisSmooth( (AxisType)i );
-
-		currentAxes.timestamp = Time.time;
 		
-		// update buttons
-		lastButtons = currentButtons;
-		currentButtons = new InputButtonState();
-
-		// go through all buttons (except ButtonType.None)
+		// update buttons (except ButtonType.None)
 		int[] buttonValues = (int[]) System.Enum.GetValues(typeof(ButtonType));
 		for(int i = 1; i < buttonValues.Length; i++)
 			UpdateButton((ButtonType)buttonValues[i]);
 
-		currentButtons.timestamp = Time.time;
-
-		bool axisChanged = false;
-		for( int i = 0; i < currentAxes.axisValues.Length; i++)
-			axisChanged |= Mathf.Abs(currentAxes.axisValues[i] - lastAxes.axisValues[i]) / Time.deltaTime > 0.1f;
-
-		if( currentButtons.buttons != lastButtons.buttons || axisChanged )
+		// check if state has changed
+		if( StateChanged(lastState,currentState) )
 			lastInputTime = Time.time;
 	}
 	
-	public bool GetButton(ButtonType buttonType)
+	bool StateChanged(InputState s1, InputState s2)
 	{
-		return currentButtons.GetButton(buttonType);
-	}
-
-	public bool GetButtonDown(ButtonType buttonType)
-	{
-		if( currentButtons.GetButton(buttonType) && !lastButtons.GetButton(buttonType))
+		if( s1.buttons != s2.buttons )
 			return true;
 		
-		return false;
-	}
-	
-	public bool GetButtonUp(ButtonType buttonType)
-	{
-		if( !currentButtons.GetButton(buttonType) && lastButtons.GetButton(buttonType))
+		bool axisChanged = false;
+		for( int i = 0; i < s1.axisValues.Length; i++)
+			axisChanged |= Mathf.Abs(s1.axisValues[i] - s2.axisValues[i]) / Time.deltaTime > 0.1f;
+
+		if( axisChanged )
 			return true;
 		
 		return false;
@@ -82,10 +71,10 @@ public class InputDevice : MonoBehaviour
 	
 	void UpdateAxisSmooth(AxisType axis)
 	{
-		float lastVal = lastAxes.GetAxis(axis);
+		float lastVal = lastState.GetAxis(axis);
 		float currentVal = GetAxisRaw(axis);
-		if( Mathf.Abs(currentVal) < 0.5f )  // set axis to zero if abs value is smaller than this
-			currentVal = 0;
+		
+		currentVal = Mathf.InverseLerp(config.deadZone,1,Mathf.Abs(currentVal)) * Mathf.Sign(currentVal); // apply dead zone (todo: radial dead zone based on 2d distance)
 		
 		float maxDelta = Time.deltaTime*config.sensitivity;
 		
@@ -93,25 +82,53 @@ public class InputDevice : MonoBehaviour
 		   maxDelta *= 2;
 		
 		currentVal = Mathf.Clamp( lastVal + Mathf.Clamp(currentVal-lastVal,-maxDelta,maxDelta), -1, 1 );
-		currentAxes.SetAxis(axis,currentVal);
-	}
-	
-	public float GetAxisRaw(AxisType axisType)
-	{
-		string axisStr = "";
-		
-		axisStr += config.GetAxis(axisType);
-
-		// add new axis here
-		
-		axisStr = axisStr.Replace("#",deviceId.ToString());
-		
-		return Input.GetAxisRaw(axisStr);
+		currentState.SetAxis(axis,currentVal);
 	}
 	
 	void UpdateButton(ButtonType buttonType)
 	{
-		currentButtons.SetButton( buttonType, GetButtonRaw(buttonType) );
+		currentState.SetButton( buttonType, GetButtonRaw(buttonType) );
+	}
+	
+	public bool GetButton(ButtonType buttonType)
+	{
+		return currentState.GetButton(buttonType);
+	}
+
+	public bool GetButtonDown(ButtonType buttonType)
+	{
+		if( currentState.GetButton(buttonType) && !lastState.GetButton(buttonType))
+			return true;
+		
+		return false;
+	}
+	
+	public bool GetButtonUp(ButtonType buttonType)
+	{
+		if( !currentState.GetButton(buttonType) && lastState.GetButton(buttonType))
+			return true;
+		
+		return false;
+	}
+	
+	public float GetAxisRaw(AxisType axisType)
+	{
+		string axisStr = config.GetAxis(axisType);
+		if( config.isJoystick )
+		{
+			axisStr = axisStr.Replace("#",deviceId.ToString());
+			return Input.GetAxisRaw(axisStr);
+		}
+		else
+		{
+			string[] axisStringSplit = axisStr.Split(' ');
+			int axisVal = 0;
+			if( Input.GetKey(axisStringSplit[0]) )
+				axisVal++;
+			if( Input.GetKey(axisStringSplit[1]) )
+				axisVal--;
+			return axisVal;
+		}
 	}
 	
 	bool GetButtonRaw(ButtonType buttonType)
@@ -119,8 +136,6 @@ public class InputDevice : MonoBehaviour
 		string key = "";
 		
 		key += config.GetButton(buttonType);
-
-		// add new buttons here
 		
 		if( key == "" )
 			return false;

@@ -136,6 +136,6 @@ public class InputManager : MonoBehaviour {
 		if( initalizedJoystickCount != Input.GetJoystickNames().Length)
 			RefreshDevices();
 			
-		print( activeDevice.name + " " + activeDevice.axis + " " + activeDevice.buttons );
+		print( activeDevice.name + " " + activeDevice.state );
 	}
 }
