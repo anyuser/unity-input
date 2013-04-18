@@ -10,9 +10,9 @@ www.mariov.ch
 
 Because the unity input manager is stupid.
 
-The goal was to make an input manager which allows you to add different configurations for different type of controllers, so it works on Windows and Mac, with Keyboard and different Gamepads (like ps3 or xbox) at the same time, no matter which one you plug in first.
+The goal was to make an input manager which allows you to add different configurations for different type of controllers, so it works on Windows and Mac, with Keyboard and different gamepads mixed(like ps3 or xbox) at the same time, no matter which one you plug in first.
 
-This code was initially written for the game Krautscape (www.krautscape.net). It was not intended to be distributed as a package so there are still some Krautscape-specific things inside (like button names etc.). But if anyone can use this or parts of it, feel free to use it in your projects!
+This code was initially written for the game Krautscape (www.krautscape.net). If you can use this or parts of it, feel free to use it in your projects!
 
 
 ## FEATURES
@@ -23,44 +23,77 @@ This code was initially written for the game Krautscape (www.krautscape.net). It
 - Always get input from the last active device (for singleplayer games)
 
 
-## INSTALLATION
+## USE IT IN ANOTHER PROJECT
 
-If you use it in another project, copy the InputManager.asset.renameit file to your ProjectSettings directory (rename it to inputManager.asset)
+If you use it in another project, copy InputManager.asset from the ProjectSettings directory to your project.
 
 
-## ADDING A NEW BUTTON/AXIS
-
-You need to add your buttons in the file InputDeviceConfig:
-
-1. Add a variable with the button/axis name to the config class e.g. 
-
-    public string newButton = "space";
-    // or
-    public string newAxis = "Joystick # Horizontal"; 
-    
-    // # will be replaced by joystick number
-    // the name of the axis is the unity inputmanager name
-
-    Set the name 
-
-2. Add the button/axis to the ButtonType or AxisType enum
-3. Add the button/axis to the GetButton or GetAxis function
-
-## CHANGE AND ADD CONFIGS
+## CHANGING AND ADDING CONFIGURATIONS
 
 Each config is saved in a gameobject as a subobject of the input manager. You can just change the values in the inspector of existing configs. If you need a new config for a different controller type, copy an existing one and change the values. 
+
+Adding button and axis mapping works like this:
+
+- for joystick buttons, use "button 1", "button 2" etc.
+- for joystick axes, use "Joystick # X", "Joystick # Y", "Joystick # Axis 3" etc.
+  these are axis names from the unity input manager, # will be replaced by joystick id
+  If you need more axes or joysticks, add them to the input manager
+- for keyboard buttons, use "x", "space" etc.
+- for keyboard axes, use "w s" etc. (positive and negative key separated by space)
+
+It's convenient to change button names in the ButtonType enum for easier code reading.
+
 
 ## GET INPUT
 
 you can get input from the last active input device like this:
 
-    InputManager.activeDevice.GetButton(ButtonType.Accelerate);
+    InputManager.activeDevice.GetButton(ButtonType.Action1);
     InputManager.activeDevice.GetAxis(AxisType.Horizontal);
 
 you can get input from other devices like this:
 
-    InputManager.inputDevices[deviceId].GetButton(ButtonType.Accelerate);
+    InputManager.inputDevices[deviceId].GetButton(ButtonType.Action1);
 
+## CONTROLLER MAPPING
+### XBOX 360 CONTROLLER (MAC)
 
+    D-pad up: button 5
+    D-pad down: button 6
+    D-pad left: button 7
+    D-pad right: button 8
+    start: button 9
+    back: button 10
+    left stick(click): button 11
+    right stick(click): button 12
+    left bumper: button 13
+    right bumper: button 14
+    center("x") button: button 15
+    A: button 16
+    B: button 17
+    X: button 18
+    Y: button 19
 
+### PS3 CONTROLLER (MAC)
+
+    Left stick X: X axis
+    Left stick Y: Y axis
+    Right stick X: 3rd axis
+    Right stick Y: 4th axis
+    Up: button 4
+    Right: button 5
+    Down: button 6
+    Left: button 7
+    Triangle: button 12
+    Circle: button 13
+    X: button 14
+    Square: button 15
+    L1: button 10
+    L2: button 8
+    L3: button 1
+    R1: button 11
+    R2: button 9
+    R3: button 2
+    Start: button 0
+    Select: button 3 
 	

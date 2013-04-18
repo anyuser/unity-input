@@ -114,6 +114,9 @@ public class InputDevice : MonoBehaviour
 	public float GetAxisRaw(AxisType axisType)
 	{
 		string axisStr = config.GetAxis(axisType);
+		if( axisStr == "" )
+			return 0;
+		
 		if( config.isJoystick )
 		{
 			axisStr = axisStr.Replace("#",deviceId.ToString());
