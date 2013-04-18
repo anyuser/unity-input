@@ -10,7 +10,7 @@ www.mariov.ch
 
 Because the unity input manager is stupid. (Don't get me wrong, unity itself is fantastic, but the input manager is just... bad.)
 
-The goal was to make an input manager which allows you to add different configurations for different type of controllers, so it works on Windows and Mac, with Keyboard and different gamepads mixed(like ps3 or xbox) at the same time, no matter which one you plug in first.
+The goal was to make an input manager which allows you to add different configurations for different type of controllers, so it works on Windows and Mac, with Keyboard and different gamepads mixed (like ps3 or xbox) at the same time, no matter which one you plug in first.
 
 This code was initially written for the game Krautscape (www.krautscape.net). If you can use this or parts of it, feel free to use it in your projects!
 
@@ -35,8 +35,8 @@ Each config is saved in a gameobject as a subobject of the input manager. You ca
 Adding button and axis mapping works like this:
 
 - for joystick buttons, use "button 1", "button 2" etc.
-- for joystick axes, use "Joystick # X", "Joystick # Y", "Joystick # Axis 3" etc.
-  these are axis names from the unity input manager, # will be replaced by joystick id
+- for joystick axes, use "Joystick # X", "Joystick # Y", "Joystick # Axis 3" etc.  
+  these are axis names from the unity input manager, # will be replaced by joystick id  
   If you need more axes or joysticks, add them to the input manager
 - for keyboard buttons, use "x", "space" etc.
 - for keyboard axes, use "w s" etc. (positive and negative key separated by space)
