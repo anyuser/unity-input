@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class InputManager : MonoBehaviour {
 		
 	public float lastInputTime {get; private set;}
-	
+	public bool DebugLogging = true;
 	InputDeviceConfig[] inputDeviceConfigs;
 	public static InputDevice activeDevice;
 	public static List<InputDevice> inputDevices = new List<InputDevice>();
@@ -19,7 +19,11 @@ public class InputManager : MonoBehaviour {
 		
 		RefreshDevices();
 	}
-	
+	void LogDebug(string text){
+		if (DebugLogging) {
+			Debug.Log (text);
+		}
+	}
 	void RefreshDevices()
 	{
 		if( Input.GetJoystickNames().Length > 0 )
@@ -27,11 +31,11 @@ public class InputManager : MonoBehaviour {
 			string str = "Connected Joysticks:\n";
 			for(int i = 0; i < Input.GetJoystickNames().Length; i++)
 				str += "Joystick "+i+" ("+Input.GetJoystickNames()[i]+") ";
-			Debug.Log(str);
+			LogDebug(str);
 		}
 		else
 		{
-			Debug.Log("No Joysticks/Gamepads connected");
+			LogDebug("No Joysticks/Gamepads connected");
 		}
 				
 		List<InputDeviceConfig> availableConfigs = new List<InputDeviceConfig>();
@@ -136,6 +140,6 @@ public class InputManager : MonoBehaviour {
 		if( initalizedJoystickCount != Input.GetJoystickNames().Length)
 			RefreshDevices();
 			
-		print( activeDevice.name + " " + activeDevice.state );
+		LogDebug( activeDevice.name + " " + activeDevice.state );
 	}
 }
