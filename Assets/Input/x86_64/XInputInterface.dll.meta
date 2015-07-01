@@ -30,7 +30,7 @@ PluginImporter:
     LinuxUniversal:
       enabled: 1
       settings:
-        CPU: x86
+        CPU: AnyCPU
     OSXIntel:
       enabled: 1
       settings:
@@ -42,15 +42,15 @@ PluginImporter:
     OSXUniversal:
       enabled: 1
       settings:
-        CPU: x86
+        CPU: AnyCPU
     SamsungTV:
       enabled: 0
       settings:
         STV_MODEL: STANDARD_13
     Win:
-      enabled: 1
+      enabled: 0
       settings:
-        CPU: AnyCPU
+        CPU: None
     Win64:
       enabled: 1
       settings:
