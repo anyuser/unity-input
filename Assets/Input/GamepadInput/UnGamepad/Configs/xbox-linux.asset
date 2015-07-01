@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a1d19a2ff6634a9692a5b37b2ee40b6, type: 3}
+  m_Name: xbox-linux
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::UnGamepadConfig2
+  restrictPlatforms: 04000000
+  joystickNames:
+  - microsoft
+  - xbox
+  displayName: XBOX 360 Controller
+  layout: {fileID: 11400000, guid: 7ba91af300bf5406ea907aed341630fb, type: 2}
+  deadZone: .150000006
+  inputMappings:
+  - target: 0
+    type: 1
+    inputId: 0
+    inputMin: 0
+    inputMax: 1
+  - target: 1
+    type: 1
+    inputId: 1
+    inputMin: 0
+    inputMax: 1
+  - target: 2
+    type: 1
+    inputId: 2
+    inputMin: 0
+    inputMax: 1
+  - target: 3
+    type: 1
+    inputId: 3
+    inputMin: 0
+    inputMax: 1
+  - target: 4
+    type: 1
+    inputId: 14
+    inputMin: 0
+    inputMax: 1
+  - target: 5
+    type: 1
+    inputId: 7
+    inputMin: 0
+    inputMax: 1
+  - target: 6
+    type: 1
+    inputId: 6
+    inputMin: 0
+    inputMax: 1
+  - target: 7
+    type: 0
+    inputId: 7
+    inputMin: 0
+    inputMax: -1
+  - target: 8
+    type: 0
+    inputId: 8
+    inputMin: 0
+    inputMax: -1
+  - target: 9
+    type: 0
+    inputId: 7
+    inputMin: 0
+    inputMax: 1
+  - target: 10
+    type: 0
+    inputId: 8
+    inputMin: 0
+    inputMax: 1
+  - target: 11
+    type: 1
+    inputId: 4
+    inputMin: 0
+    inputMax: 1
+  - target: 12
+    type: 1
+    inputId: 5
+    inputMin: 0
+    inputMax: 1
+  - target: 13
+    type: 1
+    inputId: 8
+    inputMin: 0
+    inputMax: 1
+  - target: 14
+    type: 1
+    inputId: 9
+    inputMin: 0
+    inputMax: 1
+  - target: 15
+    type: 0
+    inputId: 1
+    inputMin: -1
+    inputMax: 1
+  - target: 16
+    type: 0
+    inputId: 2
+    inputMin: 1
+    inputMax: -1
+  - target: 17
+    type: 0
+    inputId: 4
+    inputMin: -1
+    inputMax: 1
+  - target: 18
+    type: 0
+    inputId: 5
+    inputMin: 1
+    inputMax: -1
+  - target: 19
+    type: 0
+    inputId: 3
+    inputMin: 0
+    inputMax: 1
+  - target: 20
+    type: 0
+    inputId: 6
+    inputMin: 0
+    inputMax: 1

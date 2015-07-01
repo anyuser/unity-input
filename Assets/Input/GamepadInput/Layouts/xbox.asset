@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f753f08272afd4e8894f5e6048711f6b, type: 3}
+  m_Name: xbox
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::GamepadLayout2
+  buttonNames:
+  - button: 0
+    name: A
+  - button: 1
+    name: B
+  - button: 2
+    name: X
+  - button: 3
+    name: Y
+  - button: 4
+    name: Menu
+  - button: 5
+    name: Start
+  - button: 6
+    name: Back
+  - button: 7
+    name: D-Pad Left
+  - button: 9
+    name: D-Pad Right
+  - button: 8
+    name: D-Pad Up
+  - button: 10
+    name: D-Pad Down
+  - button: 11
+    name: Left Bumper
+  - button: 12
+    name: Right Bumper
+  - button: 13
+    name: Left Stick Button
+  - button: 14
+    name: Right Stick Button
+  axisNames:
+  - axis: 0
+    name: Left Stick Horizontal
+  - axis: 1
+    name: Left Stick Vertical
+  - axis: 2
+    name: Right Stick Horizontal
+  - axis: 3
+    name: Right Stick Vertical
+  - axis: 4
+    name: Left Trigger
+  - axis: 5
+    name: Right Trigger
