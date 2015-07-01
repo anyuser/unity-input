@@ -1,61 +1,30 @@
 
 
-# UNNECESSARY INPUT MANAGER 0.0.2
-for unity 4 (probably also 3.5)  
+# UNNECESSARY INPUT MANAGER 0.2.0
+for Unity 5
 by Mario von Rickenbach  
 www.mariov.ch
 
 
 ## WHY? 
 
-Because the unity input manager is stupid. (Don't get me wrong, unity itself is fantastic, but the input manager is just... bad.)
+Because the unity input manager is stupid.
 
 The goal was to make an input manager which allows you to add different configurations for different type of controllers, so it works on Windows and Mac, with Keyboard and different gamepads mixed (like ps3 or xbox) at the same time, no matter which one you plug in first.
 
-This code was initially written for the game Krautscape (www.krautscape.net). If you can use this or parts of it, feel free to use it in your projects!
+This code was initially written for the game Krautscape (www.krautscape.net) and Drei (www.etter.co/drei). If you can use this or parts of it, feel free to use it in your projects! 
 
 
 ## FEATURES
 
-- Different device configs for different controller types and operating systems
-- Unplug & Plug new controllers while playing, they get initialized automatically with the right configuration
-- Support for up to 4 gamepads with mixed configurations & multiple keyboard configurations
-- Always get input from the last active device (for singleplayer games)
+- Unified gamepad input. 
+- Different device configs for different controller types and operating systems. 
+- Uses XInput.NET for gamepads on windows, the normal unity input system on Mac and Linux
+- Input mapping configurations for gamepads, keyboard and mouse. 
+- Map arbitrary button and axis names to different devices
+- no documentation
 
-
-## USE IT IN ANOTHER PROJECT
-
-If you use it in another project, copy InputManager.asset from the ProjectSettings directory to your project.
-
-
-## CHANGING AND ADDING CONFIGURATIONS
-
-Each config is saved in a gameobject as a subobject of the input manager. You can just change the values in the inspector of existing configs. If you need a new config for a different controller type, copy an existing one and change the values. 
-
-Adding button and axis mapping works like this:
-
-- for joystick buttons, use "button 1", "button 2" etc.
-- for joystick axes, use "Joystick # X", "Joystick # Y", "Joystick # Axis 3" etc.  
-  these are axis names from the unity input manager, # will be replaced by joystick id  
-  If you need more axes or joysticks, add them to the input manager
-- for keyboard buttons, use "x", "space" etc.
-- for keyboard axes, use "w s" etc. (positive and negative key separated by space)
-
-It's convenient to change button names in the ButtonType enum for easier code reading.
-
-
-## GET INPUT
-
-you can get input from the last active input device like this:
-
-    InputManager.activeDevice.GetButton(ButtonType.Action1);
-    InputManager.activeDevice.GetAxis(AxisType.Horizontal);
-
-you can get input from other devices like this:
-
-    InputManager.inputDevices[deviceId].GetButton(ButtonType.Action1);
-
-## CONTROLLER MAPPING
+## UNITY CONTROLLER MAPPING
 ### XBOX 360 CONTROLLER (MAC)
 
     D-pad up: button 5
